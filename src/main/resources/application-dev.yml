@@ -21,15 +21,23 @@ spring:
   h2:
     console:
       enabled: true
+  # data.sql 파일을 실행하기 위한 설정
   # 4
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create # Data Definition Language: sql 쿼리 모음
     # 5
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+    # sql init 이전에 ddl을 실행해라
+    defer-datasource-initialization: true
+  # db data init
+  sql:
+    init:
+      data-locations:
+        - classpath:db/data.sql # resource 폴더 -> 스프링 실행 시 자동 실행
 
 # 6
 logging:
