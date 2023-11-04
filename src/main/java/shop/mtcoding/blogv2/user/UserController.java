@@ -33,7 +33,7 @@ public class UserController {
     @PostMapping("/login")
     public String login(@Valid UserRequest.LoginDTO requestDTO, Errors errors) {
         User sessionUser = userService.로그인(requestDTO);
-        session.setAttribute("sessionUser", sessionUser);
+        session.setAttribute("sessionUser", sessionUser);   // HashMap임
         // 로그인 시 세션 ID 생성 -> response로 클라이언트(브라우저)가 받음 -> setCookie 헤더에 저장
         // 개발자 도구 -> 요청 전송 -> 응답 확인 -> Application 탭에서 확인 가능
         // 재로그인 시 -> request 헤더에 세션 id를 받아서 로그인
